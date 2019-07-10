@@ -1,0 +1,60 @@
+// ==========================================================================
+// Reset
+// Based on https://github.com/jaydenseric/Fix
+// ==========================================================================
+
+// 1. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
+
+html {
+  @include box-sizing(border-box);
+  line-height: 1;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%; // * 1 *
+  -webkit-text-size-adjust: 100%; // * 1 *
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 1. Set global inheritance from box-sizing property set on `html` element.
+
+*,
+*:before,
+*:after {
+  @include box-sizing(inherit); // * 1 *
+}
+
+// 1. Incase custom font was used without a fallback
+
+body {
+  margin: 0;
+  font-family: sans-serif; // * 1 *
+}
+
+iframe {
+  border: 0;
+}
+
+main {
+  display: block;
+}
+
+sup {
+  position: relative;
+  top: -.5em;
+  vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+figure {
+  margin: 0;
+}
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}

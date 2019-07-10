@@ -1,0 +1,51 @@
+// ==========================================================================
+// Titles & Subtitles
+// ==========================================================================
+
+.title,
+.subtitle {
+    
+    &--xxxs { font-size: rem($size-xxxs); }
+    &--xxs { font-size: rem($size-xxs); }
+    &--xs { font-size: rem($size-xs); }
+    &--sm { font-size: rem($size-sm); }
+    &--md { font-size: rem($size-md); }
+    &--lg { font-size: rem($size-lg); }
+    &--xl { font-size: rem($size-xl); }
+    &--xxl { font-size: rem($size-xxl); }
+    &--xxxl { font-size: rem($size-xxxl); }
+}
+
+.title {
+    font-weight: 700;
+}
+
+.subtitle {
+    font-weight: 100;
+}
+
+// Misc
+// --------------------------------------------------
+
+.title,
+.subtitle {
+    word-break: break-word;
+}
+
+.title:not(:last-child),
+.subtitle:not(:last-child) {
+  margin-bottom: map-get($spaces, xxs);
+}
+
+// Title Set
+// --------------------------------------------------
+
+.title-set {
+    .title {
+        margin: 0;
+    }
+
+    .title + .subtitle {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,32 @@
+// ==========================================================================
+// Form Elements
+// ==========================================================================
+
+// Remove the default vertical scrollbar in IE.
+textarea { overflow: auto; }
+
+input[type="email"], 
+input[type="number"], 
+input[type="search"], 
+input[type="text"], 
+input[type="tel"], 
+input[type="url"], 
+input[type="password"], 
+textarea,
+select {
+    display: block;
+    margin: $form-input-margin;
+    padding: $form-input-padding;
+    width: auto;
+    border: $form-input-border;
+    border-radius: $form-input-radius;
+    background-color: $form-input-bg;
+    color: $form-input-color;
+    font-size: $form-input-size;
+    font-family: inherit;
+    appearance: none;
+
+    &:focus {
+        border-color: $form-input-focus;
+    }
+}

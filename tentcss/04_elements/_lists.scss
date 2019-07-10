@@ -1,0 +1,31 @@
+// ==========================================================================
+// Lists
+// ==========================================================================
+
+ul,
+ol {
+  margin: $list-margin;
+  padding: $list-padding;
+}
+
+ul {
+  list-style: $unordered-list-style;
+}
+
+ol {
+  list-style: $ordered-list-style;
+}
+
+li {
+  display: list-item;
+  margin-bottom: map-get($spaces, xxxs);
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+dd {
+  margin-left: 0;
+}

@@ -1,0 +1,24 @@
+// ==========================================================================
+// Containers
+// ==========================================================================
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+
+	@include breakpoint-min(sm) {
+		max-width: map-get($container-max-widths, 'sm');
+	}
+	@include breakpoint-min(md) {
+		max-width: map-get($container-max-widths, 'md');
+	}
+	@include breakpoint-min(lg) {
+		max-width: map-get($container-max-widths, 'xl');
+	}
+
+    &--fluid {
+        max-width: 100%;
+    }
+}

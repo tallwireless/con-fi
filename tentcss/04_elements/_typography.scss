@@ -1,0 +1,36 @@
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+p {
+	margin: $pararaph-margin;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	display: block;
+	margin: $heading-margin;
+	color: $heading-color;
+	font-weight: inherit;
+	font-size: inherit;
+	line-height: $heading-line-height;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+h1 { font-size: rem($size-xxxl); }
+h2 { font-size: rem($size-xxl); }
+h3 { font-size: rem($size-xl); }
+h4 { font-size: rem($size-lg); }
+h5 { font-size: rem($size-md); }
+h6 { font-size: rem($size-sm); }

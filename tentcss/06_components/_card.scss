@@ -1,0 +1,62 @@
+// ==========================================================================
+// Cards
+// ==========================================================================
+
+.card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: $card-margin;
+    border: $card-border;
+    border-radius: $card-radius;
+    background: $card-bg;
+    color: $card-color;
+
+    & > :last-child {
+    margin-bottom: 0;
+    }
+
+    &__image {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    &__content {
+        padding: $card-content-padding;
+
+        flex: 1 0 auto;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.card--filled {
+    background-color: $card-color;
+    
+    &.card--primary { background-color: $color-primary; }
+    &.card--secondary { background-color: $color-secondary; }
+    &.card--tertiary { background-color: $color-tertiary; }
+}
+
+.card--outlined {
+    border: $card-outlined-border;
+    
+    &.card--primary { border-color: $color-primary; }
+    &.card--secondary { border-color: $color-secondary; }
+    &.card--tertiary { border-color: $color-tertiary; }
+}
+
+.card--raised {
+    box-shadow: $card-raised-shadow;
+}
+
+.card--clear,
+.card--feature {
+    border: 0;
+}
+
+.card--clear {
+    background: transparent;
+}

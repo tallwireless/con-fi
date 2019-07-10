@@ -1,0 +1,31 @@
+// ==========================================================================
+// Lists
+// ==========================================================================
+
+.list {
+
+    &--unstyled,
+    &--inline {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    &--inline {
+
+        .list__item {
+            display: inline-block;
+
+            &:not(:last-child) {
+                padding-right: 25px;
+            }
+        }
+    }
+
+    &--nulled {
+        
+        &,
+        .list__item {
+            margin: 0;
+        }
+    }
+}

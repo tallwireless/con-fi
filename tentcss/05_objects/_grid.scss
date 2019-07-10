@@ -1,0 +1,80 @@
+// ==========================================================================
+// Grid
+// ==========================================================================
+
+.grid {
+	@extend .flex;
+	padding: 0;
+	width: 100%;
+	flex-wrap: wrap;
+	flex-direction: row;
+
+	&--gutterless {
+		& > .grid__column {
+			padding: 0;
+		}
+	}
+}
+
+// Grid Modifiers
+// Extends .flex
+// ==========================================================================
+
+.grid--stack          { @extend .flex--stack;          }
+.grid--top            { @extend .flex--top;            }
+.grid--bottom         { @extend .flex--bottom;         }
+.grid--center         { @extend .flex--center;         }
+.grid--stretch        { @extend .flex--stretch;         }
+.grid--baseline       { @extend .flex--baseline;       }
+
+.grid--justify-center { @extend .flex--justify-center; }
+.grid--justify-start  { @extend .flex--justify-start;  }
+.grid--justify-end    { @extend .flex--justify-end; }
+
+
+// Grid Columns
+// ==========================================================================
+
+
+.grid__column {
+	@extend .flex__item;
+	margin-left: 0;
+	max-width: 100%;
+	width: 100%;
+	padding-left: $grid-gutter;
+	padding-right: $grid-gutter;
+
+	// .column-* vertically aligns an individual .column
+	&--top { @extend .flex__item--top; }
+	&--bottom { @extend .flex__item--bottom;}
+	&--center { @extend .flex__item--center; }
+
+	// Explicit Column Percent Sizes
+	@for $i from 1 through $grid-columns {
+		$factor: 100% * ($i / $grid-columns);
+		&--#{$i} {
+			flex: 0 0 #{$factor};
+			max-width: #{$factor};
+		}
+	}
+
+	@each $point in $grid-breakpoints {
+		@include breakpoint-min($point) {
+			@for $i from 1 through $grid-columns {
+				$factor: 100% * ($i / $grid-columns);
+				&--#{$i}--#{$point} {
+					flex: 0 0 #{$factor};
+					max-width: #{$factor};
+				}
+			}
+		}
+	}
+}
+
+// Breakpoint changes for default selectors
+// ==========================================================================
+
+@include breakpoint-min(sm) {
+	.grid { width: 100%; }
+	.grid__column { padding: 0 $grid-gutter; }
+}

@@ -1,0 +1,3 @@
+[submodule "tentcss"]
+	path = tentcss
+	url = ./tentcss

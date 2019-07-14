@@ -10,11 +10,3 @@
                     <h3 class="subtitle subtitle-xl margin-xxs">{{ subtitle }}</h3>
             </header>
             <main class="mastcontent bg-color-lightest padding-xs">
-            {{ content }}
-            </main>
-        <footer class="mastfoot bg-color-secondary type-center">
-            <span class="color-light"> Powered by <a target="_new"
-                  href="https://github.com/tallwireless/con-fi">ConFi</a></span></footer>
-        </div>
-    </body>
-</html>

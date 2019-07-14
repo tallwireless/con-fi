@@ -5,7 +5,8 @@ app = Flask("ConFi")
 
 
 @app.route("/")
-def create():
+@app.route("/create", methods=["GET"])
+def display_form():
     data = {
         "title": "Wifi Registration",
         "subtitle": "WiFi Registration",
@@ -20,5 +21,15 @@ def configure():
         "title": "Configuration",
         "subtitle": "WiFi Configuration",
         "content": render_template("configure.tpl"),
+    }
+    return render_template("main.tpl", **data)
+
+
+@app.route("/create", methods=["POST"])
+def handle_form():
+    data = {
+        "title": "Wifi Registration",
+        "subtitle": "WiFi Registration",
+        "content": "You created something!",
     }
     return render_template("main.tpl", **data)

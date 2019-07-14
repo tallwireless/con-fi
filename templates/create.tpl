@@ -18,7 +18,7 @@ login to the BTV SSID in the village this year.</p>
         <div class="grid__column "></div>
         <div class="grid__column">
     <h4 class="subtitle subtitle-xl type-center margin-x margin-y">Create Creditals</h5>
-    <form>
+    <form action="/create" method="post">
         <label class="control__label" for="username">Username:</label>
         <input type="text" width=25 name="username"
         id="username" class="control__input">

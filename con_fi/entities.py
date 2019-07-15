@@ -19,6 +19,8 @@ class User(Base):
 
     role = relationship("Role", back_populates="users")
 
+    api_key = relationship("API_Key", back_populates="user")
+
     enabled = Column(Boolean, default=True)
 
 
@@ -29,7 +31,7 @@ class Role(Base):
     name = Column(String(25))
     vlan = Column(Integer, default=None)
 
-    users = relationship("User", back_populates="roles")
+    users = relationship("User", back_populates="role")
 
 
 class API_Key(Base):
@@ -38,7 +40,8 @@ class API_Key(Base):
     api_key = Column(String(64), primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
 
-    user = relationship("User", back_populates="api_keys")
+    user = relationship("User", back_populates="api_key")
+
     expires = Column(DateTime)
 
 

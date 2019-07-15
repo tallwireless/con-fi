@@ -26,7 +26,7 @@ def configure():
 @app.route("/create", methods=["POST"])
 def handle_form():
     err_msg = []
-
+    # Is all the info here?
     if request.form["username"] == "":
         print("no username")
         err_msg.append("A username is required.")
@@ -40,6 +40,7 @@ def handle_form():
     if request.form["verify_password"] != request.form["password"]:
         err_msg.append("Passwords didn't match.")
 
+    # send back to form if errors
     if len(err_msg) != 0:
         return display_form(err_msg, request.form["username"])
 

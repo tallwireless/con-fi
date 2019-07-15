@@ -2,7 +2,13 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
+from con_fi.entities import User
+from con_fi.db import SessionMaker
+from con_fi import setup
+
 app = Flask("ConFi")
+
+setup.setup()
 
 
 @app.route("/")
@@ -43,6 +49,27 @@ def handle_form():
     # send back to form if errors
     if len(err_msg) != 0:
         return display_form(err_msg, request.form["username"])
+
+    # Check to see if the user exists
+    db_ses = SessionMaker()
+
+    user = (
+        db_ses.query(User.username)
+        .filter_by(username=request.form["username"])
+        .one_or_none()
+    )
+
+    if user is None:
+        # User doesn't exist, and need to create it
+        user = User(
+            username=request.form["username"], password=request.form["password"]
+        )
+        db_ses.add(user)
+        db_ses.commit()
+    else:
+        # update the users password
+        user.password = request.form["password"]
+        db_ses.commit()
 
     data = {
         "title": "Account Created",

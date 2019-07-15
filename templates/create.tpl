@@ -18,7 +18,7 @@ login to the BTV SSID in the village this year.</p>
 </p>
 <div class="container">
     <h4 class="subtitle subtitle-xl type-center margin-x margin-y">Create Creditals</h5>
-        {% if  err_msg.length != 0 %}
+        {% if  err_msg %}
         <div class="card card--filled card--tertiary card--filled
         card--outlined margin-xl margin-x">
         <div class="card__content">

@@ -7,11 +7,12 @@ app = Flask("ConFi")
 
 @app.route("/")
 @app.route("/create", methods=["GET"])
-def display_form(err_msg=[]):
+def display_form(err_msg=[], username=None):
     data = {
         "title": "Wifi Registration",
         "subtitle": "WiFi Registration",
         "err_msg": err_msg,
+        "username": username,
     }
     return render_template("create.tpl", **data)
 
@@ -25,14 +26,22 @@ def configure():
 @app.route("/create", methods=["POST"])
 def handle_form():
     err_msg = []
+
     if request.form["username"] == "":
         print("no username")
         err_msg.append("A username is required.")
+
     if request.form["password"] == "":
         err_msg.append("A password is required.")
 
+    if request.form["verify_password"] == "":
+        err_msg.append("Ensure you verify your password.")
+
+    if request.form["verify_password"] != request.form["password"]:
+        err_msg.append("Passwords didn't match.")
+
     if len(err_msg) != 0:
-        return display_form(err_msg)
+        return display_form(err_msg, request.form["username"])
 
     data = {
         "title": "Account Created",

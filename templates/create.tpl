@@ -1,3 +1,6 @@
+{% extends "main.tpl" %}
+
+{% block content %}
 <p>Welcome to the Blue Team Village WiFi Registration Portal.
 This form will created your credentials for being able to
 login to the BTV SSID in the village this year.</p>
@@ -14,10 +17,24 @@ login to the BTV SSID in the village this year.</p>
     will reset your password with in the database.
 </p>
 <div class="container">
+    <h4 class="subtitle subtitle-xl type-center margin-x margin-y">Create Creditals</h5>
+        {% if  err_msg.length != 0 %}
+        <div class="card card--filled card--tertiary card--filled
+        card--outlined margin-xl margin-x">
+        <div class="card__content">
+        Please correct the following errors:
+        <ul class="list">
+            {% for msg in err_msg %}
+            <li class="list__item">{{msg}}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        </div>
+
+        {% endif %}
     <div class="grid">
         <div class="grid__column "></div>
         <div class="grid__column">
-    <h4 class="subtitle subtitle-xl type-center margin-x margin-y">Create Creditals</h5>
     <form action="/create" method="post">
         <label class="control__label" for="username">Username:</label>
         <input type="text" width=25 name="username"
@@ -34,3 +51,4 @@ login to the BTV SSID in the village this year.</p>
         </div>
         <div class="grid__column"></div>
 </div>
+{% endblock %}

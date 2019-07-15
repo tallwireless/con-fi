@@ -1,12 +1,12 @@
 // ==========================================================================
-// Colors 
+// Colors
 // ==========================================================================
 
 @import "02_tools/scaling";
 
 $color-primary:    #4b85d2 !default;
 $color-secondary:  #404040 !default;
-$color-tertiary:   #FF4136 !default;
+$color-tertiary:   #8b000055 !default;
 
 $color-lightest:   	  #FFFFFF !default;
 $color-lighter:    		#F2F2F2 !default;
@@ -58,7 +58,7 @@ $spaces: (
   xxxs: rem($space-base),
   xxs: rem($space-base * 2),
   xs: rem($space-base * 3),
-  sm: rem($space-base * 4), 
+  sm: rem($space-base * 4),
   md: rem($space-base * 5),
   lg: rem($space-base * 6),
   xl: rem($space-base * 7),
@@ -134,14 +134,14 @@ $container-max-widths: (
 // ==========================================================================
 
 // The breakpoint-min() & breakpoint-max() mixins we be rendered in EM units.
-// We'll perform the pixel to EM conversion within the mixins. 
+// We'll perform the pixel to EM conversion within the mixins.
 // Please list breakpoints in pixel values.
 
 $breakpoints: (
-    xs: 0, 
-    sm: 576px, 
-    md: 768px, 
-    lg: 992px, 
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
     xl: 1200px,
     xxl: 1400px,
     xxxl: 1600px
@@ -155,7 +155,7 @@ $breakpoints: (
 //
 // e.g. .grid__column--{GRID #}--{BREAKPOINT}
 //
-// Note: The keys set in the $grid-breakpoints variable must match those found in $breakpoints. 
+// Note: The keys set in the $grid-breakpoints variable must match those found in $breakpoints.
 // Otherwise the source will not compile.
 $grid-breakpoints: (
   xs,
@@ -291,7 +291,7 @@ $card-bg: $color-lightest !default;
 $card-color: $base-color !default;
 $card-raised-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.04), 0 0.2rem 1rem 0 rgba(0,0,0,.10) !default;
 
-$card-content-padding: map-get($spaces, xxs) !default; 
+$card-content-padding: map-get($spaces, xxs) !default;
 $card-outlined-border: 2px solid transparent !default;
 
 

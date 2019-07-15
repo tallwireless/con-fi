@@ -78,3 +78,23 @@ def handle_form():
         "status": state,
     }
     return render_template("created.tpl", **data)
+
+
+@app.route("/admin/users", methods=["GET"])
+def admin_list_users():
+    db_ses = SessionMaker()
+
+    db_users = db_ses.query(User).all()
+    users = []
+    for db_user in db_users:
+        users.append(
+            {
+                "username": db_user.username,
+                "password": db_user.password,
+                "id": db_user.id,
+                "role": db_user.role,
+            }
+        )
+    data = {"title": "User Accounts", "subtitle": "User Accounts", "users": users}
+
+    return render_template("admin/list-users.tpl", **data)

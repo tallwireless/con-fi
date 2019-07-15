@@ -8,7 +8,7 @@
     <body class="bg-color-primary">
         <div class="container padding-xs">
             <header class="masthead type-center bg-color-lightest">
-                <img style="width:200px" src="/static/btv-logo.png">
+               <a href="/"> <img style="width:200px" src="/static/btv-logo.png"></a>
                     <h3 class="subtitle subtitle-xl margin-xxs">{{ subtitle }}</h3>
             </header>
             <main class="mastcontent bg-color-lightest padding-xs">

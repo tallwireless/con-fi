@@ -37,15 +37,13 @@ login to the BTV SSID in the village this year.</p>
         <div class="grid__column">
     <form action="/create" method="post">
         <label class="control__label" for="username">Username:</label>
-        <input type="text" width=25 name="username"
-        id="username" class="control__input">
+        <input type="text" width=25 name="username" id="username" class="control__input">
         <label class="control__label" for="password">Password:</label>
-        <input type="password" width=25 class="control__input"
-        id="password" name="password">
+        <input type="password" width=25 class="control__input" id="password" name="password">
+        <label class="control__label" for="verify_password">Veriy Password:</label>
+        <input type="password" width=25 class="control__input" id="verify_password" name="verify_password">
         <div class="container type-center"><div class="display-inline">
-        <input type="submit" class="control__button button
-                             button--filled button--primary"
-                             value="Create">
+        <input type="submit" class="control__button button button--filled button--primary" value="Create">
             </div></div>
     </form>
         </div>

@@ -2,18 +2,19 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
+import config
+
 from con_fi.entities import User
-from con_fi.db import SessionMaker
 from con_fi import setup
 
 app = Flask("ConFi")
 
-setup.setup()
+SessionMaker = setup.setup(config)
 
 
 @app.route("/")
 @app.route("/create", methods=["GET"])
-def display_form(err_msg=[], username=None):
+def display_form(err_msg=[], username=""):
     data = {
         "title": "Wifi Registration",
         "subtitle": "WiFi Registration",
@@ -53,12 +54,9 @@ def handle_form():
     # Check to see if the user exists
     db_ses = SessionMaker()
 
-    user = (
-        db_ses.query(User.username)
-        .filter_by(username=request.form["username"])
-        .one_or_none()
-    )
+    user = db_ses.query(User).filter_by(username=request.form["username"]).one_or_none()
 
+    state = ""
     if user is None:
         # User doesn't exist, and need to create it
         user = User(
@@ -66,14 +64,17 @@ def handle_form():
         )
         db_ses.add(user)
         db_ses.commit()
+        state = "created"
     else:
         # update the users password
         user.password = request.form["password"]
         db_ses.commit()
+        state = "updated"
 
     data = {
         "title": "Account Created",
         "subtitle": "Account Created",
-        "content": render_template("created.tpl"),
+        "username": user.username,
+        "status": state,
     }
-    return render_template("main.tpl", **data)
+    return render_template("created.tpl", **data)

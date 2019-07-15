@@ -1,6 +1,7 @@
 import config
 
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 from con_fi import entities
 
@@ -13,3 +14,10 @@ if config.DATABASE_TYPE == "sqlite":
 
 # Create the tables
 entities.Base.metadata.create_all(engine)
+
+init_role = entities.Role(name="default", vlan="1")
+
+Session = sessionmaker(bind=engine)
+session = Session()
+session.add(init_role)
+session.commit()

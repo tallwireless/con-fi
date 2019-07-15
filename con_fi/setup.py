@@ -1,5 +1,3 @@
-from . import db
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -10,4 +8,4 @@ def setup(config):
         db_type = "sqlite:///" + config.SQLITE_CONFIG["location"]
         engine = create_engine(db_type, echo=config.DATABASE_ECHO)
 
-    db.SessionMaker = sessionmaker(bind=engine)
+    return sessionmaker(bind=engine)

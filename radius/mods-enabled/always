@@ -21,12 +21,12 @@
 #  - noop     - Simulate a no-op.
 #  - updated  - Indicate that the request has been updated.
 #
-#  If an instance is listed in a session {}  section, 
+#  If an instance is listed in a session {}  section,
 #  this simulates a user having <integer> sessions.
-#  
+#
 #  simulcount = <integer>
 #
-#  If an instance is listed in a session {}  section, 
+#  If an instance is listed in a session {}  section,
 #  this simulates the user having multilink
 #  sessions.
 #

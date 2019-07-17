@@ -82,4 +82,3 @@ remove_reply_message_if_eap {
 		noop
 	}
 }
-

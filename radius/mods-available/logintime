@@ -20,4 +20,3 @@ logintime {
 	# lower than 60 seconds well.
 	minimum_timeout = 60
 }
-

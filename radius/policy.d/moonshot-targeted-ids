@@ -18,7 +18,7 @@
 #       Moonshot-Realm-TargetedId =* ANY,
 #       Moonshot-TR-COI-TargetedId =* ANY,
 #
- 
+
 #
 #  targeted_id_salt definition
 #  This salt serves the purpose of protecting targeted IDs against
@@ -51,8 +51,8 @@ moonshot_host_tid.post-auth {
 		}
 
 		#  if you want to use SQL-based backing, remove the comment from
-		#  this line. You also have to configure and enable the 
-		#  moonshot-targeted-ids sql module in mods-enabled. 
+		#  this line. You also have to configure and enable the
+		#  moonshot-targeted-ids sql module in mods-enabled.
 		#
 #		moonshot_get_targeted_id
 
@@ -61,8 +61,8 @@ moonshot_host_tid.post-auth {
 			#  generate the TID
 			moonshot_make_targeted_id
 
-			#  if you want to store your TargetedId in SQL-based backing, 
-			#  remove the comment from this line. You also have to configure 
+			#  if you want to store your TargetedId in SQL-based backing,
+			#  remove the comment from this line. You also have to configure
 			#  and enable the moonshot-targeted-ids sql module in mods-enabled.
 			#
 #			moonshot_tid_sql
@@ -98,8 +98,8 @@ moonshot_realm_tid.post-auth {
 		}
 
 		#  if you want to use SQL-based backing, remove the comment from
-		#  this line. You also have to configure and enable the 
-		#  moonshot-targeted-ids sql module in mods-enabled. 
+		#  this line. You also have to configure and enable the
+		#  moonshot-targeted-ids sql module in mods-enabled.
 		#
 #		moonshot_get_targeted_id
 
@@ -108,8 +108,8 @@ moonshot_realm_tid.post-auth {
 			#  generate the TID
 			moonshot_make_targeted_id
 
-			#  if you want to store your TargetedId in SQL-based backing, 
-			#  remove the comment from this line. You also have to configure 
+			#  if you want to store your TargetedId in SQL-based backing,
+			#  remove the comment from this line. You also have to configure
 			#  and enable the moonshot-targeted-ids sql module in mods-enabled.
 			#
 #			moonshot_tid_sql
@@ -145,8 +145,8 @@ moonshot_coi_tid.post-auth {
 		}
 
 		#  if you want to use SQL-based backing, remove the comment from
-		#  this line. You also have to configure and enable the 
-		#  moonshot-targeted-ids sql module in mods-enabled. 
+		#  this line. You also have to configure and enable the
+		#  moonshot-targeted-ids sql module in mods-enabled.
 		#
 #		moonshot_get_targeted_id
 
@@ -155,8 +155,8 @@ moonshot_coi_tid.post-auth {
 			#  generate the TID
 			moonshot_make_targeted_id
 
-			#  if you want to store your TargetedId in SQL-based backing, 
-			#  remove the comment from this line. You also have to configure 
+			#  if you want to store your TargetedId in SQL-based backing,
+			#  remove the comment from this line. You also have to configure
 			#  and enable the moonshot-targeted-ids sql module in mods-enabled.
 			#
 #			moonshot_tid_sql

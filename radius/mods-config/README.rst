@@ -19,4 +19,3 @@ For example, the `users` file is now located in
 1. The file is used in the `authorize` section.
 2. The file is used by the `files` module.
 3. It is a "module configuration" file, which is a specific format.
-

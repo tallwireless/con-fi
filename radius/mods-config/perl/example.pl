@@ -227,4 +227,3 @@ sub log_request_attributes {
 		&radiusd::radlog(L_DBG, "RAD_REQUEST: $_ = $RAD_REQUEST{$_}");
 	}
 }
-

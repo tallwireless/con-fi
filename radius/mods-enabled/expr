@@ -81,7 +81,7 @@
 #		"%{urlunquote:http%%3A%%47%%47example.org%%47}" == "http://example.org/"
 #
 #  escape	escape string similar to rlm_sql safe_characters
-#		"%{escape:<img>foo.jpg</img>}" == "=60img=62foo.jpg=60/img=62" 
+#		"%{escape:<img>foo.jpg</img>}" == "=60img=62foo.jpg=60/img=62"
 #
 #  unescape	reverse of escape
 #		"%{unescape:=60img=62foo.jpg=60/img=62}" == "<img>foo.jpg</img>"
@@ -94,7 +94,7 @@
 #
 #  md5		get md5sum hash
 #		"%{md5:foo}" == "acbd18db4cc2f85cedef654fccc4a4d8"
-#		
+#
 #  sha1		get sha1 hash
 #		"%{sha1:foo}" == "0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"
 #

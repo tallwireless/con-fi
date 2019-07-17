@@ -22,4 +22,3 @@ dhcp_sqlippool.post-auth {
 		}
 	}
 }
-

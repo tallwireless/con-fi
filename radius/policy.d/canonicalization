@@ -17,7 +17,7 @@ split_username_nai {
 		update request {
 			&Stripped-User-Name := "%{1}"
 		}
-		
+
 		# Only add the Stripped-User-Domain attribute if
 		# we have a domain. This means presence checks
 		# for Stripped-User-Domain work.
@@ -45,7 +45,7 @@ split_username_nai.post-proxy {
 		update proxy-reply {
 			&Stripped-User-Name := "%{1}"
 		}
-		
+
 		# Only add the Stripped-User-Domain attribute if
 		# we have a domain. This means presence checks
 		# for Stripped-User-Domain work.
@@ -110,4 +110,3 @@ rewrite_calling_station_id {
 		noop
 	}
 }
-

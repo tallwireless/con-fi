@@ -79,4 +79,3 @@ counter daily {
 	allowed_service_type = Framed-User
 	cache_size = 5000
 }
-

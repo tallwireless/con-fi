@@ -83,4 +83,3 @@ DEFAULT	Suffix == ".cslip", Strip-User-Name = Yes
 #	Service-Type = Framed-User,
 #	Framed-Protocol = SLIP,
 #	Framed-Compression = Van-Jacobson-TCP-IP
-

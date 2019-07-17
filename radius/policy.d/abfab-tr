@@ -35,7 +35,7 @@ abfab_client_check {
 			}
 		}
 		else {
-			# set GSS-Acceptor-Host-Name if it is not set by the mechanism 
+			# set GSS-Acceptor-Host-Name if it is not set by the mechanism
 			# but it is defined in the client configuration
 			update request {
 				GSS-Acceptor-Host-Name = "%{client:gss_acceptor_host_name}"
@@ -56,7 +56,7 @@ abfab_client_check {
 			GSS-Acceptor-Realm-Name := "%{client:gss_acceptor_realm_name}"
 		}
 	}
-	
+
 	# set GSS-Acceptor-Service-Name attribute from the client configuration
 	if ("%{client:gss_acceptor_service_name}") {
 		update request {

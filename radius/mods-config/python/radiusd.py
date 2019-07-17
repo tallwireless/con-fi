@@ -40,8 +40,7 @@ L_DBG_ERR_REQ = 20
 # log function
 def radlog(level, msg):
     import sys
-    sys.stdout.write(msg + '\n')
+
+    sys.stdout.write(msg + "\n")
 
     level = level
-
-

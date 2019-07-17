@@ -1,0 +1,5 @@
+The following files must exist here for everything to work:
+
+server.pem
+server.key
+ca.pem

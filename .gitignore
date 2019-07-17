@@ -4,7 +4,7 @@ static/css/
 
 *.sw*
 
-radius/cert/*
+radius/certs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

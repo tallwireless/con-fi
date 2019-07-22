@@ -23,16 +23,42 @@ class User(Base):
 
     # Attributes are stored in the JSON column type. The key is attribute
     # name. Every attribute has a op and value associated with it.
-#    SELECT id, username, json_array_elements(info)->>'attribute' as attribute, 
-#                         json_array_elements(info)->>'op' as op, 
-#                         json_array_elements(info)->>'value'
-#                as value FROM public.users where id=7;
-    attributes = Column(JSON, default = {})
-    
+    #    SELECT id, username, json_array_elements(info)->>'attribute' as attribute,
+    #                         json_array_elements(info)->>'op' as op,
+    #                         json_array_elements(info)->>'value'
+    #                as value FROM public.users where id=7;
+    attributes = Column(JSON, default={})
 
     enabled = Column(Boolean, default=True)
 
+    def __init__(self, username, password, role=None):
+        self.username = username
+        self.set_password(password)
+        if role is not None:
+            self.role_name = role
 
+    def set_password(self, password):
+        self.set_attr("Cleartext-Password", ":=", password)
+
+    def get_attr(self, attr):
+        for i in self.attributes.data:
+            if i["attribute"] == attr:
+                return i
+
+        raise Exception("No such attribute")
+        return None
+
+    def set_attr(self, attr, op, value):
+        data = {}
+        for i in self.attributes.data:
+            if i["attribute"] == attr:
+                data = i
+                self.attributes.data.remove(i)
+        i["attribute"] = attr
+        i["op"] = op
+        i["value"] = value
+        self.attributes.data.append(data)
+        return data
 
 
 class Role(Base):

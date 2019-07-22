@@ -877,7 +877,7 @@ eap {
 		#  but *may* also cause other clients to stop
 		#  working.
 		#
-	#	send_error = no
+		send_error = yes
 
 		#  Server identifier to send back in the challenge.
 		#  This should generally be the host name of the

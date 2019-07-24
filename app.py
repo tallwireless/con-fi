@@ -56,7 +56,6 @@ def handle_form():
 
     user = db_ses.query(User).filter_by(username=request.form["username"]).one_or_none()
 
-    state = ""
     if user is None:
         # User doesn't exist, and need to create it
         user = User(
@@ -64,19 +63,20 @@ def handle_form():
         )
         db_ses.add(user)
         db_ses.commit()
-        state = "created"
+        data = {
+            "title": "Account Created",
+            "subtitle": "Account Created",
+            "username": user.username,
+            "success": True,
+        }
     else:
         # update the users password
-        user.password = request.form["password"]
-        db_ses.commit()
-        state = "updated"
-
-    data = {
-        "title": "Account Created",
-        "subtitle": "Account Created",
-        "username": user.username,
-        "status": state,
-    }
+        data = {
+            "title": "Account Exists",
+            "subtitle": "Account Exists",
+            "username": user.username,
+            "success": False,
+        }
     return render_template("created.tpl", **data)
 
 
@@ -88,12 +88,7 @@ def admin_list_users():
     users = []
     for db_user in db_users:
         users.append(
-            {
-                "username": db_user.username,
-                "password": db_user.password,
-                "id": db_user.id,
-                "role": db_user.role,
-            }
+            {"username": db_user.username, "id": db_user.id, "role": db_user.role}
         )
     data = {"title": "User Accounts", "subtitle": "User Accounts", "users": users}
 

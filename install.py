@@ -12,6 +12,12 @@ if config.DATABASE_TYPE == "sqlite":
     db = "sqlite:///" + config.SQLITE_CONFIG["location"]
     engine = create_engine(db, echo=config.DATABASE_ECHO)
 
+if config.DATABASE_TYPE == "postgres":
+    db = "postgres://{username}:{password}@{host}:{port}/{database}"
+    db = db.format(**config.POSTGRES_CONFIG)
+    print(db)
+    engine = create_engine(db, echo=config.DATABASE_ECHO)
+
 # Create the tables
 entities.Base.metadata.create_all(engine)
 

@@ -2,7 +2,7 @@
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.postgresql import JSON
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -71,20 +71,20 @@ class Role(Base):
     users = relationship("User", back_populates="role")
 
 
-class API_Key(Base):
-    __tablename__ = "api_keys"
-
-    api_key = Column(String(64), primary_key=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
-
-    user = relationship("User", back_populates="api_key")
-
-    expires = Column(DateTime)
-
-
-class MAC_Address(Base):
-    __tablename__ = "mac_addresses"
-
-    mac = Column(String(17), primary_key=True)
-    reason = Column(String(), nullable=True)
-    time = Column(DateTime)
+# class API_Key(Base):
+#    __tablename__ = "api_keys"
+#
+#    api_key = Column(String(64), primary_key=True)
+#    user_id = Column(Integer, ForeignKey("users.id"))
+#
+#    user = relationship("User", back_populates="api_key")
+#
+#    expires = Column(DateTime)
+#
+#
+# class MAC_Address(Base):
+#    __tablename__ = "mac_addresses"
+#
+#    mac = Column(String(17), primary_key=True)
+#    reason = Column(String(), nullable=True)
+#    time = Column(DateTime)

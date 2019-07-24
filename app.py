@@ -88,12 +88,7 @@ def admin_list_users():
     users = []
     for db_user in db_users:
         users.append(
-            {
-                "username": db_user.username,
-                "password": db_user.password,
-                "id": db_user.id,
-                "role": db_user.role,
-            }
+            {"username": db_user.username, "id": db_user.id, "role": db_user.role}
         )
     data = {"title": "User Accounts", "subtitle": "User Accounts", "users": users}
 

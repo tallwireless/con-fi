@@ -67,9 +67,7 @@ def handle_form():
         state = "created"
     else:
         # update the users password
-        user.password = request.form["password"]
-        db_ses.commit()
-        state = "updated"
+        state = "already exisits"
 
     data = {
         "title": "Account Created",

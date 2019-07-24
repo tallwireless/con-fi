@@ -19,19 +19,18 @@ class User(Base):
 
     role = relationship("Role", back_populates="users")
 
-    api_key = relationship("API_Key", back_populates="user")
-
     # Attributes are stored in the JSON column type. The key is attribute
     # name. Every attribute has a op and value associated with it.
     #    SELECT id, username, json_array_elements(info)->>'attribute' as attribute,
     #                         json_array_elements(info)->>'op' as op,
     #                         json_array_elements(info)->>'value'
     #                as value FROM public.users where id=7;
-    attributes = Column(JSON, default={})
+    attr = Column(JSON)
 
     enabled = Column(Boolean, default=True)
 
     def __init__(self, username, password, role=None):
+        self.attr = []
         self.username = username
         self.set_password(password)
         if role is not None:
@@ -41,7 +40,7 @@ class User(Base):
         self.set_attr("Cleartext-Password", ":=", password)
 
     def get_attr(self, attr):
-        for i in self.attributes.data:
+        for i in self.attr.data:
             if i["attribute"] == attr:
                 return i
 
@@ -50,14 +49,14 @@ class User(Base):
 
     def set_attr(self, attr, op, value):
         data = {}
-        for i in self.attributes.data:
+        for i in self.attr:
             if i["attribute"] == attr:
                 data = i
-                self.attributes.data.remove(i)
-        i["attribute"] = attr
-        i["op"] = op
-        i["value"] = value
-        self.attributes.data.append(data)
+                self.attr.remove(i)
+        data["attribute"] = attr
+        data["op"] = op
+        data["value"] = value
+        self.attr.append(data)
         return data
 
 

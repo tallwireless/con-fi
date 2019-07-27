@@ -21,7 +21,7 @@ if config.DATABASE_TYPE == "postgres":
 # Create the tables
 entities.Base.metadata.create_all(engine)
 
-init_role = entities.Role(name="default", vlan="1")
+init_role = entities.Role(name="default")
 
 Session = sessionmaker(bind=engine)
 session = Session()

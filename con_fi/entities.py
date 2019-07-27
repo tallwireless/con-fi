@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
+
 
 Base = declarative_base()
 
@@ -15,9 +15,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(25))
 
-    role_id = Column(Integer, ForeignKey("roles.id"))
-
-    role = relationship("Role", back_populates="users")
+    role_id = Column(Integer, ForeignKey("roles.id"), default=1)
 
     # Attributes are stored in the JSON column type. The key is attribute
     # name. Every attribute has a op and value associated with it.
@@ -29,7 +27,7 @@ class User(Base):
 
     enabled = Column(Boolean, default=True)
 
-    def __init__(self, username, password, role=None):
+    def __init__(self, username, password, role="default"):
         self.attr = []
         self.username = username
         self.set_password(password)
@@ -64,10 +62,32 @@ class Role(Base):
     __tablename__ = "roles"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(25))
-    vlan = Column(Integer, default=None)
+    name = Column(String(26), unique=True)
+    attr = Column(JSON)
 
-    users = relationship("User", back_populates="role")
+    def __init__(self, name, attr=[]):
+        self.attr = attr
+        self.name = name
+
+    def get_attr(self, attr):
+        for i in self.attr.data:
+            if i["attribute"] == attr:
+                return i
+
+        raise Exception("No such attribute")
+        return None
+
+    def set_attr(self, attr, op, value):
+        data = {}
+        for i in self.attr:
+            if i["attribute"] == attr:
+                data = i
+                self.attr.remove(i)
+        data["attribute"] = attr
+        data["op"] = op
+        data["value"] = value
+        self.attr.append(data)
+        return data
 
 
 # class API_Key(Base):

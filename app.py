@@ -51,6 +51,9 @@ def handle_form():
     if request.form["verify_password"] != request.form["password"]:
         err_msg.append("Passwords didn't match.")
 
+    if len(request.form["password"]) < 8:
+        err_msg.append("Password needs to be at least 8 characters")
+
     # send back to form if errors
     if len(err_msg) != 0:
         return display_form(err_msg, request.form["username"])

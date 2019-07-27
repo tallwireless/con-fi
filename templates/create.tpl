@@ -32,7 +32,8 @@ login to the BTV SSID in the village this year.</p>
     <form action="/create" method="post">
         <label class="control__label" for="username">Username:</label>
         <input type="text" width=25 name="username" id="username" class="control__input" value="{{ username }}">
-        <label class="control__label" for="password">Password:</label>
+        <label class="control__label" for="password">Password: <i>8 character
+        min</i></label>
         <input type="password" width=25 class="control__input" id="password" name="password">
         <label class="control__label" for="verify_password">Veriy Password:</label>
         <input type="password" width=25 class="control__input" id="verify_password" name="verify_password">

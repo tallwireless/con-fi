@@ -1,0 +1,11 @@
+The following files must exist here for everything to work:
+
+server.pem
+  This is the private key for the cert without a passphrase on the key.
+
+server.crt
+  This is the signed server certificate. It should include all INTERMEDIATAE
+  CERTS for proper cert verification.
+
+ca.pem
+  The root CA of the chain.

@@ -1,0 +1,309 @@
+// ==========================================================================
+// Tool Dependencies for Variables
+// ==========================================================================
+
+@import "../02_tools/scaling";
+
+// ==========================================================================
+// Colors 
+// ==========================================================================
+
+$color-primary:    #0074D9 !default;
+$color-secondary:  #3D9970 !default;
+$color-tertiary:   #FF4136 !default;
+
+$color-lightest:   	  #FFFFFF !default;
+$color-lighter:    		#F2F2F2 !default;
+$color-light:      		#E0E0E0 !default;
+$color-medium:     		#A4A4A4 !default;
+$color-dark:       		#6E6E6E !default;
+$color-darker:     		#444444 !default;
+$color-darkest:    		#111111 !default;
+
+// Base Colors
+$base-color: $color-darker !default;
+$base-color-inverse: $color-lighter !default;
+$base-color-bg: $color-lightest !default;
+
+// Link Colors
+$link-color: $color-primary !default;
+$link-hover-color: darken($link-color, 15%) !default;
+
+// ==========================================================================
+// Base
+// ==========================================================================
+
+$base-font-weight: 400 !default;
+$base-line-height: 1.6 !default;
+
+$border-radius: 6px !default;
+
+// ==========================================================================
+// Scaling
+// ==========================================================================
+
+$scale-ratio: 1.250 !default; // Major Third Ratio
+$scale-unit: 16 !default;
+
+// ==========================================================================
+// Space Sizes
+// ==========================================================================
+
+// Sets a baseline to be used by all the other space variables.
+
+$space-base: 8px !default;
+
+// The Spaces map is great for maintaining consistency in your development.
+// Useful for padding and margins.
+//
+// e.g. property: map-get($spaces, sm);
+
+$spaces: (
+  xxxs: rem($space-base),
+  xxs: rem($space-base * 2),
+  xs: rem($space-base * 3),
+  sm: rem($space-base * 4), 
+  md: rem($space-base * 5),
+  lg: rem($space-base * 6),
+  xl: rem($space-base * 7),
+  xxl: rem($space-base * 8),
+  xxxl: rem($space-base * 9)
+) !default;
+
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+$font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu,"Open Sans","Helvetica Neue",sans-serif !default;
+$font-family-secondary: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-monospace: "Lucida Console",Courier,monospace !default;
+
+$pararaph-margin: 0 0 map-get($spaces, xs) !default;
+$heading-margin: 0 0 map-get($spaces, sm) !default;
+
+// Font Sizes
+$size-xxxs: 10px !default;
+$size-xxs: 12px !default;
+$size-xs: 14px !default;
+$size-sm: 16px !default;
+$size-md: 18px !default;
+$size-lg: 20px !default;
+$size-xl: 32px !default;
+$size-xxl: 40px !default;
+$size-xxxl: 48px !default;
+
+$size-base: $size-sm !default;
+
+// ==========================================================================
+// Blockquote
+// ==========================================================================
+
+$blockquote-border: 4px solid $color-dark !default;
+$blockquote-padding: 0 0 0 map-get($spaces, xxxs) !default;
+$blockquote-margin: 0 0 map-get($spaces, xxs) !default;
+
+$cite-style: italic !default;
+
+// ==========================================================================
+// Code
+// ==========================================================================
+
+$code-color: $color-primary !default;
+$code-padding: rem(2px) rem(4px) !default;
+$code-bg: $color-lighter !default;
+
+
+// ==========================================================================
+// Zones
+// ==========================================================================
+
+$zone-header:  "masthead" !default;
+$zone-content: "mastcontent" !default;
+$zone-footer:  "mastfoot" !default;
+
+
+// ==========================================================================
+// Containers
+// ==========================================================================
+
+$container-max-widths: (
+  sm: rem(540px),
+  md: rem(720px),
+  lg: rem(960px),
+  xl: rem(1140px)
+) !default;
+
+// ==========================================================================
+// Media Query Breakpoints
+// ==========================================================================
+
+// The breakpoint-min() & breakpoint-max() mixins we be rendered in EM units.
+// We'll perform the pixel to EM conversion within the mixins. 
+// Please list breakpoints in pixel values.
+
+$breakpoints: (
+    xs: 0, 
+    sm: 576px, 
+    md: 768px, 
+    lg: 992px, 
+    xl: 1200px,
+    xxl: 1400px,
+    xxxl: 1600px
+) !default;
+
+// ==========================================================================
+// Grids
+// ==========================================================================
+
+// Determines which breakpoints will have their own column classses.
+//
+// e.g. .grid__column--{GRID #}--{BREAKPOINT}
+//
+// Note: The keys set in the $grid-breakpoints variable must match those found in $breakpoints. 
+// Otherwise the source will not compile.
+$grid-breakpoints: (
+  sm,
+  md,
+  lg,
+  xl
+) !default;
+
+$grid-columns: 12 !default;
+
+// Gutter is applied to padding-left and padding-right. The value is not split.
+$grid-gutter: map-get($spaces, xxs) !default;
+
+// ==========================================================================
+// Dividers
+// ==========================================================================
+
+$divider-margin: map-get($spaces, xs) 0 !default;
+$divider-height: 1px !default;
+$divider-color: #dbdbdb !default;
+
+// ==========================================================================
+// Lists
+// ==========================================================================
+
+$list-padding: 0 !default;
+$list-margin: 0 0 map-get($spaces, xs) !default;
+
+$unordered-list-style: circle inside !default;
+$ordered-list-style: decimal inside !default;
+
+$list-inline-space: map-get($spaces, xs) !default;
+
+
+// ==========================================================================
+// Tables
+// ==========================================================================
+
+$table-cell-padding: map-get($spaces, xxxs) !default;
+$table-stripped-odd-bg: $color-lighter !default;
+$table-stripped-even-bg: $color-lightest !default;
+
+
+// ==========================================================================
+// Headings
+// ==========================================================================
+
+$heading-color: $base-color !default;
+$heading-color-inverse: $color-lighter !default;
+$heading-line-height: 1.25 !default;
+
+$lead-font-size: $size-md !default;
+$lead-font-weight: 300 !default;
+$lead-line-height: 1.6 !default;
+
+
+// ==========================================================================
+// Forms
+// ==========================================================================
+
+$form-label-weight: 600 !default;
+$form-margin: 0 0 map-get($spaces, xxxs);
+
+$form-input-margin: 0 0 map-get($spaces, xs) !default;
+$form-input-padding: map-get($spaces, xxxs) map-get($spaces, xxs) !default;
+$form-input-border: 1px solid $color-light !default;
+$form-input-radius: 0 !default;
+$form-input-size: map-get($spaces, xxs) !default;
+$form-input-color: $color-medium !default;
+$form-input-bg: $color-lightest !default;
+$form-input-focus: $color-primary !default;
+
+// Textarea Height Sizes
+$control-textarea-sm: 80px !default;
+$control-textarea-md: 140px !default;
+$control-textarea-lg: 200px !default;
+
+// ==========================================================================
+// Buttons
+// ==========================================================================
+
+$button-filled-color: $base-color-bg !default;
+$button-filled-bg: $color-dark !default;
+$button-outlined-color: $color-dark !default;
+$button-clear-color: $color-dark !default;
+
+$button-primary-color: $color-lightest !default;
+$button-primary-bg: $color-primary !default;
+$button-secondary-color: $color-lightest !default;
+$button-secondary-bg: $color-secondary !default;
+$button-tertiary-color: $color-lightest !default;
+$button-tertiary-bg: $color-tertiary !default;
+
+$button-border-radius: 0 !default;
+$button-outlined-border-width: 2px !default;
+
+// Used for creating button sizes with appropriate font-sizes.
+$button-sizes: (
+  xxxs: rem($size-xxxs),
+  xxs: rem($size-xxxs),
+  xs: rem($size-xxs),
+  sm: rem($size-xs),
+  md: rem($size-xs),
+  lg: rem($size-md),
+  xl: rem($size-lg),
+  xxl: rem($size-lg),
+  xxxl: rem($size-lg)
+) !default;
+
+// Sets the padding of the corresponding keys in $button-sizes.
+$button-padding: (
+  xxxs: map-get($spaces, xxxs) map-get($spaces, xxs),
+  xxs: map-get($spaces, xxxs) map-get($spaces, sm),
+  xs: map-get($spaces, xxxs) map-get($spaces, xs),
+  sm: map-get($spaces, xxxs) map-get($spaces, md),
+  md: map-get($spaces, xxxs) map-get($spaces, md),
+  lg: map-get($spaces, xxs) map-get($spaces, lg),
+  xl: map-get($spaces, xxs) map-get($spaces, xl),
+  xxl: map-get($spaces, xxs) map-get($spaces, xxl),
+  xxxl: map-get($spaces, xxs) map-get($spaces, xxxl)
+) !default;
+
+
+// ==========================================================================
+// Cards
+// ==========================================================================
+
+$card-margin: map-get($spaces, xxs) !default;
+$card-border: 1px solid $color-light !default;
+$card-radius: 0 !default;
+$card-bg: $color-lightest !default;
+$card-color: $base-color !default;
+$card-raised-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.04), 0 0.2rem 1rem 0 rgba(0,0,0,.10) !default;
+
+$card-content-padding: map-get($spaces, xxs) !default; 
+$card-outlined-border: 2px solid transparent !default;
+
+
+// ==========================================================================
+// Standalone Typography Modifiers
+// ==========================================================================
+
+$type-bold: 700 !default;
+$type-black: 900 !default;
+$type-italic: italic !default;
+$type-small: 0.7em !default;
+$type-caps: small-caps !default;

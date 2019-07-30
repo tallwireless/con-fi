@@ -1,0 +1,11 @@
+// ==========================================================================
+// Divider
+// ==========================================================================
+
+hr {
+    display: block;
+    margin: $divider-margin;
+    height: $divider-height;
+    border: none;
+    background-color: $divider-color;
+}

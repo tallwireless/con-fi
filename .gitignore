@@ -1,3 +1,11 @@
+# SCSS Generated CSS
+static/css/
+.sass-cache/
+
+*.sw*
+
+radius/certs/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

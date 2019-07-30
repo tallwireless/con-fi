@@ -1,17 +1,23 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import send_file
+
+# For Captcha Generation
+from PIL import Image, ImageDraw, ImageFont
+import io
 
 import config
 
 from con_fi.entities import User
 from con_fi import setup
+from con_fi import Captcha
 
 app = Flask("ConFi")
 
 # Set up the database session factory
 SessionMaker = setup.setup(config)
-
+captcha = Captcha(config.APP_KEY)
 
 # Handle default connections
 # displays the form for user registation
@@ -23,6 +29,7 @@ def display_form(err_msg=[], username=""):
         "subtitle": "WiFi Registration",
         "err_msg": err_msg,
         "username": username,
+        "captcha": str(captcha.generate_text()),
     }
     return render_template("create.tpl", **data)
 
@@ -53,6 +60,11 @@ def handle_form():
 
     if len(request.form["password"]) < 8:
         err_msg.append("Password needs to be at least 8 characters")
+
+    # validate the captcha
+    text = captcha.decode_text(request.form["encrypt"])
+    if request.form["captcha"].upper() != text:
+        err_msg.append("Captcha incorrect")
 
     # send back to form if errors
     if len(err_msg) != 0:
@@ -102,3 +114,20 @@ def admin_list_users():
     data = {"title": "User Accounts", "subtitle": "User Accounts", "users": users}
 
     return render_template("admin/list-users.tpl", **data)
+
+
+@app.route("/captcha.png", methods=["GET"])
+def generate_catcha():
+
+    text = captcha.decode_text(request.args.get("t"))
+    output = io.BytesIO()
+
+    font = ImageFont.truetype("./broken.ttf", 110)
+    img = Image.new("RGB", (400, 100), color="white")
+    drawer = ImageDraw.Draw(img)
+    drawer.text((45, -15), text, fill=(0, 0, 0), font=font)
+
+    img.save(output, format="png")
+    output.seek(0)
+
+    return send_file(output, mimetype="image/png", attachment_filename="logo.png")

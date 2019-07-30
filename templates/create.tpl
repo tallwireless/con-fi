@@ -37,6 +37,10 @@ login to the BTV SSID in the village this year.</p>
         <input type="password" width=25 class="control__input" id="password" name="password">
         <label class="control__label" for="verify_password">Veriy Password:</label>
         <input type="password" width=25 class="control__input" id="verify_password" name="verify_password">
+        <label class="control__label"> Captcha: </label>
+        <img src="/captcha.png?t={{ captcha }}" id="captcha">
+        <input class="control_input" name="captcha" type="text">
+        <input type="hidden" name="encrypt" value="{{ captcha }}">
         <div class="container type-center"><div class="display-inline">
         <input type="submit" class="control__button button button--filled button--primary" value="Create">
             </div></div>

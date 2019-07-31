@@ -2,6 +2,9 @@
 static/css/
 .sass-cache/
 
+logs/
+
+
 *.sw*
 
 radius/certs/

@@ -107,13 +107,13 @@ sql {
 
 	# Connection info:
 	#
-	server = "localhost"
-	port = 5432
-	login = "dev"
-	password = "dev"
+	server = $ENV{POSTGRES_HOST}
+	port = $ENV{POSTGRES_PORT}
+	login = $ENV{POSTGRES_USER}
+	password = $ENV{POSTGRE_PASSWORD}
 
 	# Database table configuration for everything except Oracle
-	radius_db = "confi"
+	radius_db = $ENV{POSTGRES_DB}
 
 	# If you are using Oracle then use this instead
 #	radius_db = "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=your_sid)))"

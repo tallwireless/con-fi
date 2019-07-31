@@ -7,7 +7,7 @@ logs/
 
 *.sw*
 
-radius/certs/
+ssl/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

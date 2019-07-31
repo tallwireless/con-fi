@@ -11,7 +11,7 @@ login to the BTV SSID in the village this year.</p>
     href="/configure">here</a>.
 </p>
 <div class="container">
-    <h4 class="subtitle subtitle-xl type-center margin-x margin-y">Create Creditals</h5>
+    <h4 class="subtitle subtitle-xl type-center margin-x margin-y">Create Credentials</h5>
         {% if  err_msg %}
         <div class="card card--filled card--tertiary card--filled
         card--outlined margin-xl margin-x">
@@ -35,11 +35,11 @@ login to the BTV SSID in the village this year.</p>
         <label class="control__label" for="password">Password: <i>8 character
         min</i></label>
         <input type="password" maxlength=25 class="control__input" id="password" name="password">
-        <label class="control__label" for="verify_password">Veriy Password:</label>
+        <label class="control__label" for="verify_password">Verify Password:</label>
         <input type="password" maxlength=25 class="control__input" id="verify_password" name="verify_password">
         <label class="control__label"> Captcha: </label>
         <img src="/captcha.png?t={{ captcha }}" id="captcha">
-        <input class="control_input" name="captcha" type="text" maxlength=25>
+        <input class="control_input" name="captcha" type="text" maxlength=25127.0.0.1>
         <input type="hidden" name="encrypt" value="{{ captcha }}">
         <div class="container type-center"><div class="display-inline">
         <input type="submit" class="control__button button button--filled button--primary" value="Create">

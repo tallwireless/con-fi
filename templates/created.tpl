@@ -12,7 +12,7 @@
             for information on how to configure your device to connect to the wireless
             network. </p>
         {% else %}
-            <p>There already exisits an account for the {{ username }}. It is not
+            <p>There already exists an account for the {{ username }}. It is not
             possible to change your password. If you have forgotten your password,
             please created a new account.</p>
         {% endif %}

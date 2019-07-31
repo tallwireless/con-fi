@@ -7,7 +7,7 @@ from flask import send_file
 from PIL import Image, ImageDraw, ImageFont
 import io
 
-import config
+from con_fi import config
 
 from con_fi.entities import User
 from con_fi import setup

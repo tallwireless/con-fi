@@ -6,7 +6,7 @@ services:
         - ".:/home/docker"
 
     db:
-      image: "postgres:latest-alpine"
+      image: "postgres:alpine"
       ports:
         - "5432:5432"
       volumes:

@@ -7,7 +7,7 @@ import os
 #  Possible values are: sqlite, postgres
 #
 #########
-DATABASE_ECHO = os.genenv("DB_DEBUG", False)
+DATABASE_ECHO = os.getenv("DB_DEBUG", False)
 
 #########
 #
@@ -33,4 +33,4 @@ POSTGRES_CONFIG = {
 
 # THIS SHOULD BE CHANGED BEFORE DEPLOYMENT
 
-APP_KEY = os.genenv("APP_KEY", "1111111111111111")
+APP_KEY = os.getenv("APP_KEY", "1111111111111111")

@@ -19,11 +19,14 @@ if config.DATABASE_TYPE == "postgres":
     engine = create_engine(db, echo=config.DATABASE_ECHO)
 
 # Create the tables
-entities.Base.metadata.create_all(engine)
+try:
+    entities.Base.metadata.create_all(engine)
 
-init_role = entities.Role(name="default")
+    init_role = entities.Role(name="default")
 
-Session = sessionmaker(bind=engine)
-session = Session()
-session.add(init_role)
-session.commit()
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    session.add(init_role)
+    session.commit()
+except Exception:
+    print("Database already exists")

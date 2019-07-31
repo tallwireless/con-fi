@@ -13,8 +13,35 @@ following:
  * Basic VLAN Assignment for Classes of Users
  * System packaged in Docker Containers or ablity to run it on bare metal
 
+# Running
+This project is meant to be running via `docker-compose`. The easy way to run
+it is as such:
+
+    git clone https://github.com/tallwireless/con-fi.git
+    cd con-fi
+    docker-compose up
+
+On up, the database, application server, proxy, and RADIUS server will all
+come up.
+
+The registration page can be found at `http://localhost:8080`.
+The RADIUS server can be accessed via `localhost:1812`.
+
+## Adding RADIUS clients
+Sadly at this point in the development of this project, RADIUS clients have to
+be added manually to the database. This can be accomplished with the following
+postgres query:
+
+    INSERT INTO nas (nasname, shortname, secret)
+    VALUES ('192.5.44.10', '192.5.44.10', 'thisshouldbechanged')
+
+After adding, changing, or removing devices from the NAS table, the FreeRADIUS
+service will have to be restarted:
+
+    docker-compose restart radius
+
 # Configuration
-## Application Configurations
+##
 The application itself is configured via enviroment variables passed into the
 Docker image. These can be set in the settings.env file.
 

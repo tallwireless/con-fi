@@ -88,22 +88,3 @@ class Role(Base):
         data["value"] = value
         self.attr.append(data)
         return data
-
-
-# class API_Key(Base):
-#    __tablename__ = "api_keys"
-#
-#    api_key = Column(String(64), primary_key=True)
-#    user_id = Column(Integer, ForeignKey("users.id"))
-#
-#    user = relationship("User", back_populates="api_key")
-#
-#    expires = Column(DateTime)
-#
-#
-# class MAC_Address(Base):
-#    __tablename__ = "mac_addresses"
-#
-#    mac = Column(String(17), primary_key=True)
-#    reason = Column(String(), nullable=True)
-#    time = Column(DateTime)

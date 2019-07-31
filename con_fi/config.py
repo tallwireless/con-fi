@@ -7,7 +7,7 @@ import os
 #  Possible values are: sqlite, postgres
 #
 #########
-DATABASE_ECHO = os.getenv("DB_DEBUG", False)
+DB_DEBUG = os.getenv("DB_DEBUG", False)
 
 #########
 #
@@ -16,13 +16,13 @@ DATABASE_ECHO = os.getenv("DB_DEBUG", False)
 #########
 
 POSTGRES_CONFIG = {
-    "username": os.getenv("POSGRES_USER", "dev"),
-    "password": os.getenv("POSGRES_PASSWORD", "dev"),
-    "database": os.getenv("POSGRES_DB", "confi"),
-    "host": os.getenv("POSTGRES_HOST", "127.0.0.1"),
+    "username": os.getenv("POSTGRES_USER", "dev"),
+    "password": os.getenv("POSTGRES_PASSWORD", "dev"),
+    "database": os.getenv("POSTGRES_DB", "confi"),
+    "host": os.getenv("POSTGRES_HOST", "db"),
     "port": os.getenv("POSTGRES_PORT", "5432"),
 }
-
+print(POSTGRES_CONFIG)
 ############
 #
 # Catcha Settings
@@ -34,3 +34,6 @@ POSTGRES_CONFIG = {
 # THIS SHOULD BE CHANGED BEFORE DEPLOYMENT
 
 APP_KEY = os.getenv("APP_KEY", "1111111111111111")
+
+
+DEFAULT_ROLE = os.getenv("DEFAULT_ROLE_NAME", "default")

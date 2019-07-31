@@ -2,11 +2,37 @@
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.postgresql import JSON
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, TimeStamp
 from sqlalchemy import ForeignKey
 
 
 Base = declarative_base()
+
+
+class NAS(Base):
+    __tablename__ = "nas"
+
+    id = Column(Integer, primary_key=True)
+    nasname = Column(String, nullable=False, index=True)
+    shortname = Column(String, nullable=False)
+    type = Column(String, default="other", nullable=False)
+    ports = Column(Integer)
+    secret = Column(String, nullable=False)
+    server = Column(String)
+    community = Column(String)
+    description = Column(String)
+
+
+class PostAuth(Base):
+    __tablename__ = "radpostauth"
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String, nullable=False)
+    pass1 = Column(String)
+    reply = Column(String)
+    CalledStationId = Column(String)
+    CallingStationId = Column(String)
+    authdate = Column(TimeStamp(timezone=True), nullable=False)
 
 
 class User(Base):
@@ -88,22 +114,3 @@ class Role(Base):
         data["value"] = value
         self.attr.append(data)
         return data
-
-
-# class API_Key(Base):
-#    __tablename__ = "api_keys"
-#
-#    api_key = Column(String(64), primary_key=True)
-#    user_id = Column(Integer, ForeignKey("users.id"))
-#
-#    user = relationship("User", back_populates="api_key")
-#
-#    expires = Column(DateTime)
-#
-#
-# class MAC_Address(Base):
-#    __tablename__ = "mac_addresses"
-#
-#    mac = Column(String(17), primary_key=True)
-#    reason = Column(String(), nullable=True)
-#    time = Column(DateTime)

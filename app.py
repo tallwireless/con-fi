@@ -7,17 +7,24 @@ from flask import send_file
 from PIL import Image, ImageDraw, ImageFont
 import io
 
-import config
+from con_fi import config
 
 from con_fi.entities import User
 from con_fi import setup
 from con_fi import Captcha
 
+
 app = Flask("ConFi")
 
+# Try and setup the database
+
 # Set up the database session factory
-SessionMaker = setup.setup(config)
-captcha = Captcha(config.APP_KEY)
+@app.before_first_request
+def app_setup():
+    app.logger.info("Starting App Setup...")
+    setup.setup()
+    config.captcha = Captcha(config.APP_KEY)
+
 
 # Handle default connections
 # displays the form for user registation
@@ -29,7 +36,7 @@ def display_form(err_msg=[], username=""):
         "subtitle": "WiFi Registration",
         "err_msg": err_msg,
         "username": username,
-        "captcha": str(captcha.generate_text()),
+        "captcha": str(config.captcha.generate_text()),
     }
     return render_template("create.tpl", **data)
 
@@ -62,7 +69,7 @@ def handle_form():
         err_msg.append("Password needs to be at least 8 characters")
 
     # validate the captcha
-    text = captcha.decode_text(request.form["encrypt"])
+    text = config.captcha.decode_text(request.form["encrypt"])
     if request.form["captcha"].upper() != text:
         err_msg.append("Captcha incorrect")
 
@@ -71,7 +78,7 @@ def handle_form():
         return display_form(err_msg, request.form["username"])
 
     # Check to see if the user exists
-    db_ses = SessionMaker()
+    db_ses = config.SessionMaker()
 
     # see if username already exists
     user = db_ses.query(User).filter_by(username=request.form["username"]).one_or_none()
@@ -103,7 +110,7 @@ def handle_form():
 # Just a listing of users
 @app.route("/admin/users", methods=["GET"])
 def admin_list_users():
-    db_ses = SessionMaker()
+    db_ses = config.SessionMaker()
 
     db_users = db_ses.query(User).all()
     users = []
@@ -119,7 +126,7 @@ def admin_list_users():
 @app.route("/captcha.png", methods=["GET"])
 def generate_catcha():
 
-    text = captcha.decode_text(request.args.get("t"))
+    text = config.captcha.decode_text(request.args.get("t"))
     output = io.BytesIO()
 
     font = ImageFont.truetype("./broken.ttf", 110)

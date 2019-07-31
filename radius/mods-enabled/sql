@@ -60,40 +60,6 @@ sql {
 	#  configuration section is loaded, and all other driver
 	#  configuration sections are ignored.
 	#
-	sqlite {
-		# Path to the sqlite database
-		filename = "/tmp/freeradius.db"
-
-		# How long to wait for write locks on the database to be
-		# released (in ms) before giving up.
-		busy_timeout = 200
-
-		# If the file above does not exist and bootstrap is set
-		# a new database file will be created, and the SQL statements
-		# contained within the bootstrap file will be executed.
-		bootstrap = "${modconfdir}/${..:name}/main/sqlite/schema.sql"
-	}
-
-	mysql {
-		# If any of the files below are set, TLS encryption is enabled
-		tls {
-			ca_file = "/etc/ssl/certs/my_ca.crt"
-			ca_path = "/etc/ssl/certs/"
-			certificate_file = "/etc/ssl/certs/private/client.crt"
-			private_key_file = "/etc/ssl/certs/private/client.key"
-			cipher = "DHE-RSA-AES256-SHA:AES128-SHA"
-
-			tls_required = yes
-			tls_check_cert = no
-			tls_check_cert_cn = no
-		}
-
-		# If yes, (or auto and libmysqlclient reports warnings are
-		# available), will retrieve and log additional warnings from
-		# the server if an error has occured. Defaults to 'auto'
-		warnings = auto
-	}
-
 	postgresql {
 
 		# unlike MySQL, which has a tls{} connection configuration, postgresql
@@ -107,13 +73,13 @@ sql {
 
 	# Connection info:
 	#
-	server = "localhost"
-	port = 5432
-	login = "dev"
-	password = "dev"
+	server = $ENV{POSTGRES_HOST}
+	port = $ENV{POSTGRES_PORT}
+	login = $ENV{POSTGRES_USER}
+	password = $ENV{POSTGRE_PASSWORD}
 
 	# Database table configuration for everything except Oracle
-	radius_db = "confi"
+	radius_db = $ENV{POSTGRES_DB}
 
 	# If you are using Oracle then use this instead
 #	radius_db = "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=your_sid)))"

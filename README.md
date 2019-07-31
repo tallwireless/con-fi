@@ -6,31 +6,44 @@ This is a project I'm throwing to together to provide a lightweight toolset
 for wireless admins at conferences. The hope is to be able to provide the
 following:
 
- * Self Registration for Conference Guests
- * Integrated RADIUS Server
+ * Self Registration for Conference Guests (Completed)
+ * Integrated RADIUS Server (Completed)
  * MAC Address Blocking
  * User Management
- * Basic VLAN Assignment for Classes of Users
- * System packaged in Docker Containers or ablity to run it on bare metal
+ * Basic VLAN Assignment for Classes of Users (Partially Completed)
+ * System packaged in Docker Containers or ablity to run it on bare metal (Partially Completed)
+
+# Before Running
+Before running ConFi, please ensure the SSL certs are setup correctly as
+described in the README file in the SSL directory.
+
+# Running
+This project is meant to be running via `docker-compose`. The easy way to run
+it is as such:
+
+    git clone https://github.com/tallwireless/con-fi.git
+    cd con-fi
+    docker-compose up
+
+On up, the database, application server, proxy, and RADIUS server will all
+come up.
+
+The registration page can be found at `http://localhost:8080`.
+The RADIUS server can be accessed via `localhost:1812`.
+
+# Adding RADIUS clients
+Sadly at this point in the development of this project, RADIUS clients have to
+be added manually to the database. This can be accomplished with the following
+postgres query:
+
+    INSERT INTO nas (nasname, shortname, secret)
+    VALUES ('192.5.44.10', '192.5.44.10', 'thisshouldbechanged')
+
+After adding, changing, or removing devices from the NAS table, the FreeRADIUS
+service will have to be restarted:
+
+    docker-compose restart radius
 
 # Configuration
-## FreeRADIUS
-The `radius` directory is a fully working FreeRADIUS configuration which has
-been tested on 3.0.19.
-
-It will handle all authentication requests for EAP-PEAP/EAP-MSCHAPv2 on
-127.0.0.1 port 1812.
-
-The following files need to be added `radius/certs`:
-
-    server.pem
-      This is the private key for the cert without a passphrase on the key.
-
-    server.crt
-      This is the signed server certificate. It should include all INTERMEDIATAE
-      CERTS for proper cert verification.
-
-    ca.pem
-      The root CA of the chain.
-
-These files are required for being able to support EAP-PEAP.
+Most of the application is controlled via environment variables. See the
+`settings.env` file for configuration varibles and discriptions.

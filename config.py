@@ -29,7 +29,7 @@ POSTGRES_CONFIG = {
     "username": "dev",
     "password": "dev",
     "database": "confi",
-    "host": "127.0.0.1",
+    "host": "db",
     "port": "5432",
 }
 

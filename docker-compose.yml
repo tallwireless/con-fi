@@ -29,8 +29,9 @@ services:
         depends_on:
           - app
     radius:
-      image: "freeradius-server/freeradius:3.0.17-alpine"
+      image: "freeradius/freeradius-server:3.0.19-alpine"
       volumes:
         - "./radius:/etc/freeradius"
       depends_on:
         - db
+        - app

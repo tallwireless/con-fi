@@ -2,7 +2,7 @@
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.postgresql import JSON
-from sqlalchemy import Column, Integer, String, Boolean, TimeStamp
+from sqlalchemy import Column, Integer, String, Boolean, Time
 from sqlalchemy import ForeignKey
 
 
@@ -32,7 +32,7 @@ class PostAuth(Base):
     reply = Column(String)
     CalledStationId = Column(String)
     CallingStationId = Column(String)
-    authdate = Column(TimeStamp(timezone=True), nullable=False)
+    authdate = Column(Time(timezone=True), nullable=False)
 
 
 class User(Base):

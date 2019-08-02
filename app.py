@@ -56,6 +56,12 @@ def handle_form():
     if request.form["username"] == "":
         err_msg.append("A username is required.")
 
+    validchars = "abcdefghijklmnopqrstuvwxyz0123456789"
+    for i in request.form["username"].lower():
+        if i not in validchars:
+            err_msg.append("Invalid character in username")
+            break
+
     if request.form["password"] == "":
         err_msg.append("A password is required.")
 

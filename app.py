@@ -53,8 +53,11 @@ def configure():
 def handle_form():
     err_msg = []
     # Is all the info here?
-    if request.form["username"] == "":
+    if len(request.form["username"]) <= 0:
         err_msg.append("A username is required.")
+
+    if len(request.form["username"]) < 4:
+        err_msg.append("Username needs to be 4 or more characters long")
 
     validchars = "abcdefghijklmnopqrstuvwxyz0123456789"
     for i in request.form["username"].lower():

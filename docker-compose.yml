@@ -30,10 +30,15 @@ services:
         depends_on:
           - app
     radius:
-      image: "freeradius/freeradius-server:3.0.19-alpine"
+      env_file:
+        - ./settings.env
+      image: "freeradius/freeradius-server:3.0.19"
+      ports:
+        - "1812-1813:1812-1813/udp"
       volumes:
         - "./radius:/etc/freeradius"
         - "./ssl:/etc/freeradius/certs"
       depends_on:
         - db
         - app
+

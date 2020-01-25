@@ -76,7 +76,7 @@ sql {
 	server = $ENV{POSTGRES_HOST}
 	port = $ENV{POSTGRES_PORT}
 	login = $ENV{POSTGRES_USER}
-	password = $ENV{POSTGRE_PASSWORD}
+	password = $ENV{POSTGRES_PASSWORD}
 
 	# Database table configuration for everything except Oracle
 	radius_db = $ENV{POSTGRES_DB}
